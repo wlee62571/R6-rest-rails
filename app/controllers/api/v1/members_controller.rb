@@ -36,7 +36,7 @@ class Api::V1::MembersController < ApplicationController
   def update
     # your code godes here
     @member = Member.find(params[:id])
-    if @member.update_attributes(member_params)
+    if @member.update(member_params)
       render json: @member, status: 201
     else
       render json: { error:

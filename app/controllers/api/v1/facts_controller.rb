@@ -39,7 +39,7 @@ class Api::V1::FactsController < ApplicationController
     # your code goes here
     @fact = Fact.find(params[:id])
 	
-    if @fact.update_attributes(fact_param)
+    if @fact.update(fact_params)
        redirect_to :action => 'show', :id => @fact
     else
        @members = Member.all
