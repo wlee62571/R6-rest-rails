@@ -18,7 +18,7 @@ class Api::V1::FactsController < ApplicationController
   def show
     # your code goes here
     @fact = Fact.find(params[:id])
-    render json: @fact, status: 201
+    render json: @fact, status: 200
   end
 
   # POST /members/:member_id/facts
@@ -40,10 +40,12 @@ class Api::V1::FactsController < ApplicationController
     @fact = Fact.find(params[:id])
 	
     if @fact.update(fact_params)
-       redirect_to :action => 'show', :id => @fact
+      #  redirect_to :action => 'show', :id => @fact
+      render json: @fact, status: 200
     else
-       @members = Member.all
-       render :action => 'edit'
+      #  @members = Member.all
+      #  render :action => 'edit'
+      render json: {error: "The fact entry could not be updated."}, status: 400
     end 
   end
 
@@ -52,6 +54,7 @@ class Api::V1::FactsController < ApplicationController
     # your code goes here
     @fact = Fact.find(params[:id])
     @fact.destroy
+    render json: { message: "The fact entry was deleted." }, status: 200
   end
 
   private

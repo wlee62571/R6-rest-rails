@@ -57,7 +57,7 @@ RSpec.describe 'api/v1/facts', type: :request do
     get('show fact') do
       tags 'Facts'
       security [Bearer: {}]
-      response(201, 'successful') do
+      response(200, 'successful') do
 
         after do |example|
           example.metadata[:response][:examples] = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
@@ -79,12 +79,12 @@ RSpec.describe 'api/v1/facts', type: :request do
         }
       }
       # byebug
-      response(302, 'successful') do
+      response(200, 'successful') do
         let(:fact) { {fact_text: "This is another fact."}}
 
         after do |example|
-          # example.metadata[:response][:examples] = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
-          example.metadata = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
+          example.metadata[:response][:examples] = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
+          # example.metadata = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
         end
         run_test!
       end
@@ -102,7 +102,7 @@ RSpec.describe 'api/v1/facts', type: :request do
           likes: {type: :integer}
         }
       }
-      response(302, 'successful') do
+      response(200, 'successful') do
         let(:fact) {{ fact_text: "This is another fact." }}
 
         after do |example|
@@ -115,7 +115,7 @@ RSpec.describe 'api/v1/facts', type: :request do
     delete('delete fact') do
       tags 'Facts'
       security [Bearer: {}]
-      response(204, 'successful') do
+      response(200, 'successful') do
 
         after do |example|
           example.metadata[:response][:examples] = { 'application/json' => JSON.parse(response.body, symbolize_names: true) }
