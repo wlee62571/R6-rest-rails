@@ -66,7 +66,7 @@ paths:
       security:
       - Bearer: {}
       responses:
-        '201':
+        '200':
           description: successful
     patch:
       summary: update fact
@@ -76,7 +76,7 @@ paths:
       - Bearer: {}
       parameters: []
       responses:
-        '302':
+        '200':
           description: successful
       requestBody:
         content:
@@ -97,7 +97,7 @@ paths:
       - Bearer: {}
       parameters: []
       responses:
-        '302':
+        '200':
           description: successful
       requestBody:
         content:
@@ -117,7 +117,7 @@ paths:
       security:
       - Bearer: {}
       responses:
-        '204':
+        '200':
           description: successful
   "/api/v1/members":
     get:
